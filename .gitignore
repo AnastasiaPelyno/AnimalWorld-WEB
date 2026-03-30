@@ -8,3 +8,6 @@ backend/media/
 media/
 
 .vscode/
+
+chrome-win64/
+chromedriver-win64/

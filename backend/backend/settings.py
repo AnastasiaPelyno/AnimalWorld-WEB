@@ -183,4 +183,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+import sys
+
+# Якщо ми запускаємо тести (наприклад, у GitHub Actions), 
+# використовуємо просту вбудовану базу даних SQLite, щоб уникнути помилок PostgreSQL
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+
 

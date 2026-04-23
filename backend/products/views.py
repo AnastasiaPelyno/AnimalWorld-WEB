@@ -7,15 +7,24 @@ from .serializers import ProductSerializer, CategorySerializer
 from rest_framework import filters
 from rest_framework.pagination import PageNumberPagination
 import django_filters
+from django.db.utils import ProgrammingError, OperationalError
 
 class ProductPagination(PageNumberPagination):
     page_size = 6  
     page_size_query_param = 'page_size'
     max_page_size = 100
+def get_category_choices():
+    try:
+        # Спроба дістати категорії з БД
+        return [(category.name, category.name) for category in Category.objects.all()]
+    except (ProgrammingError, OperationalError):
+        # Якщо таблиці ще немає (під час міграції), просто повертаємо порожній список
+        return []
 class ProductFilter(django_filters.FilterSet):
     category = django_filters.ChoiceFilter(
         field_name='category__name',  
-        choices=[(category.name, category.name) for category in Category.objects.all()],
+        #choices=[(category.name, category.name) for category in Category.objects.all()],
+        choices=get_category_choices,
         empty_label="Виберіть категорію"
     )
 

@@ -19,7 +19,7 @@ const App = () => {
 
   const fetchUserProfile = useCallback(async (token) => {
     try {
-      const response = await fetch('https://animalworld-web-1.onrender.com/api/users/profile/', {
+      const response = await fetch('https://animalworld-web.onrender.com/api/users/profile/', {
         headers: {
           Authorization: `Token ${token}`,
         },

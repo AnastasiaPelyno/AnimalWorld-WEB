@@ -18,7 +18,7 @@ const Profile = ({ onUpdateProfile }) => {
     
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('https://animalworld-web-1.onrender.com/api/users/profile/', {
+        const response = await axios.get('https://animalworld-web.onrender.com/api/users/profile/', {
           headers: {
             Authorization: `Token ${localStorage.getItem('access')}`,
           },
@@ -42,7 +42,7 @@ const Profile = ({ onUpdateProfile }) => {
     setError(null);
 
     try {
-      const response = await axios.put('https://animalworld-web-1.onrender.com/api/users/profile/', formData, {
+      const response = await axios.put('https://animalworld-web.onrender.com/api/users/profile/', formData, {
         headers: {
           Authorization: `Token ${localStorage.getItem('access')}`,
         },

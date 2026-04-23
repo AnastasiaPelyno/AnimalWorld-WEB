@@ -14,7 +14,7 @@ const ProductDetails = () => {
    
     const fetchProduct = async () => {
       const token = localStorage.getItem('access'); 
-      const response = await fetch(`0https://animalworld-web-1.onrender.com/api/products/products/${productId}/`, {
+      const response = await fetch(`0https://animalworld-web.onrender.com/api/products/products/${productId}/`, {
         method: 'GET',
         headers: {
           'Authorization': `Token ${token}`, 
@@ -30,7 +30,7 @@ const ProductDetails = () => {
     };
     const fetchReviews = async () => {
         const token = localStorage.getItem('access');
-        const response = await fetch(`0https://animalworld-web-1.onrender.com/api/reviews/reviews/${productId}/`, {
+        const response = await fetch(`0https://animalworld-web.onrender.com/api/reviews/reviews/${productId}/`, {
           method: 'GET',
           headers: {
             'Authorization': `Token ${token}`,
@@ -59,7 +59,7 @@ const ProductDetails = () => {
         };
         
         
-        const response = await fetch('0https://animalworld-web-1.onrender.com/api/cart/api/cart/add_to_cart/', {
+        const response = await fetch('0https://animalworld-web.onrender.com/api/cart/api/cart/add_to_cart/', {
           method: 'POST',
           headers: {
             'Authorization': `Token ${token}`,
@@ -88,7 +88,7 @@ const ProductDetails = () => {
     };
 
     try {
-      const response = await fetch(`0https://animalworld-web-1.onrender.com/api/reviews/reviews/${productId}/create/`, {
+      const response = await fetch(`0https://animalworld-web.onrender.com/api/reviews/reviews/${productId}/create/`, {
         method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,

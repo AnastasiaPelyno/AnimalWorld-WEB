@@ -9,7 +9,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('https://animalworld-web-1.onrender.com/api/orders/api/orders/my_orders/', {
+      const response = await axios.get('https://animalworld-web.onrender.com/api/orders/api/orders/my_orders/', {
         headers: {
           Authorization: `Token ${localStorage.getItem('access')}`,
         },

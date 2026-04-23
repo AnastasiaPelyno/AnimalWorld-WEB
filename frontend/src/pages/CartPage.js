@@ -12,7 +12,7 @@ const CartPage = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get('https://animalworld-web-1.onrender.com/api/cart/api/cart/view_cart/', {
+      const response = await axios.get('https://animalworld-web.onrender.com/api/cart/api/cart/view_cart/', {
         headers: {
           Authorization: `Token ${localStorage.getItem('access')}`,
         },
@@ -32,7 +32,7 @@ const CartPage = () => {
   const handleQuantityChange = async (cart_item_id, quantity) => {
     try {
       await axios.patch(
-        'http://localhost:8000/api/cart/api/cart/update_quantity/',
+        'https://animalworld-web.onrender.com/api/cart/api/cart/update_quantity/',
         { cart_item_id: cart_item_id, quantity: quantity },
         {
           headers: {
@@ -48,7 +48,7 @@ const CartPage = () => {
 
   const handleRemoveItem = async (cartItemId) => {
     try {
-      await axios.delete('http://localhost:8000/api/cart/api/cart/remove_from_cart/', {
+      await axios.delete('https://animalworld-web.onrender.com/api/cart/api/cart/remove_from_cart/', {
         data: { cart_item_id: cartItemId },
         headers: {
           Authorization: `Token ${localStorage.getItem('access')}`,
@@ -73,7 +73,7 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    axios.post('http://localhost:8000/api/cart/api/cart/checkout/', {}, {
+    axios.post('https://animalworld-web.onrender.com/api/cart/api/cart/checkout/', {}, {
       headers: {
         Authorization: `Token ${localStorage.getItem('access')}`,
       },

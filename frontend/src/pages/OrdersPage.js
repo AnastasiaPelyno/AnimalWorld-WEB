@@ -9,7 +9,7 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/orders/api/orders/my_orders/', {
+      const response = await axios.get('https://animalworld-web-1.onrender.com/api/orders/api/orders/my_orders/', {
         headers: {
           Authorization: `Token ${localStorage.getItem('access')}`,
         },
@@ -23,11 +23,11 @@ const Orders = () => {
   };
 
   useEffect(() => {
-    fetchOrders(); // Initial fetch when the component mounts
+    fetchOrders(); 
 
-    const intervalId = setInterval(fetchOrders, 5000); // Poll every 5 seconds
+    const intervalId = setInterval(fetchOrders, 5000); 
 
-    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+    return () => clearInterval(intervalId); 
   }, []);
 
   if (loading) {

@@ -12,7 +12,7 @@ const CartPage = () => {
 
   const fetchCart = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/cart/api/cart/view_cart/', {
+      const response = await axios.get('https://animalworld-web-1.onrender.com/api/cart/api/cart/view_cart/', {
         headers: {
           Authorization: `Token ${localStorage.getItem('access')}`,
         },
@@ -73,13 +73,11 @@ const CartPage = () => {
   };
 
   const handleCheckout = () => {
-    // Додайте логіку оформлення замовлення (звернення до API)
     axios.post('http://localhost:8000/api/cart/api/cart/checkout/', {}, {
       headers: {
         Authorization: `Token ${localStorage.getItem('access')}`,
       },
     }).then(() => {
-      // Перенаправлення на сторінку "Дякуємо за замовлення"
       window.location.href = '/checkout';
     }).catch((error) => {
       console.error('Error during checkout:', error);

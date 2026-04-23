@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Для отримання ID з URL
+import { useParams } from 'react-router-dom'; 
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -11,13 +11,13 @@ const ProductDetails = () => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    // Функція для отримання даних про товар за ID
+   
     const fetchProduct = async () => {
-      const token = localStorage.getItem('access'); // Отримуємо токен з localStorage
-      const response = await fetch(`http://127.0.0.1:8000/api/products/products/${productId}/`, {
+      const token = localStorage.getItem('access'); 
+      const response = await fetch(`0https://animalworld-web-1.onrender.com/api/products/products/${productId}/`, {
         method: 'GET',
         headers: {
-          'Authorization': `Token ${token}`, // Додаємо токен до заголовка
+          'Authorization': `Token ${token}`, 
         },
       });
 
@@ -30,7 +30,7 @@ const ProductDetails = () => {
     };
     const fetchReviews = async () => {
         const token = localStorage.getItem('access');
-        const response = await fetch(`http://127.0.0.1:8000/api/reviews/reviews/${productId}/`, {
+        const response = await fetch(`0https://animalworld-web-1.onrender.com/api/reviews/reviews/${productId}/`, {
           method: 'GET',
           headers: {
             'Authorization': `Token ${token}`,
@@ -39,7 +39,7 @@ const ProductDetails = () => {
     
         if (response.ok) {
           const data = await response.json();
-          setReviews(data); // Зберігаємо відгуки в стейт
+          setReviews(data); 
         } else {
           console.error('Failed to fetch reviews');
         }
@@ -52,14 +52,14 @@ const ProductDetails = () => {
   const handleAddToCart = async () => {
     if (product && quantity > 0) {
       try {
-        const token = localStorage.getItem('access'); // Отримуємо токен з localStorage
+        const token = localStorage.getItem('access'); 
         const cartItem = {
           product_id: product.product_id,
           quantity: quantity,
         };
         
-        // Запит на додавання товару в кошик
-        const response = await fetch('http://127.0.0.1:8000/api/cart/api/cart/add_to_cart/', {
+        
+        const response = await fetch('0https://animalworld-web-1.onrender.com/api/cart/api/cart/add_to_cart/', {
           method: 'POST',
           headers: {
             'Authorization': `Token ${token}`,
@@ -70,7 +70,7 @@ const ProductDetails = () => {
 
         if (response.ok) {
           console.log(`Added ${quantity} of ${product.name} to cart.`);
-          // Ви можете тут оновити стан кошика або перенаправити на сторінку кошика
+         
         } else {
           console.error('Failed to add to cart');
         }
@@ -88,7 +88,7 @@ const ProductDetails = () => {
     };
 
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/reviews/reviews/${productId}/create/`, {
+      const response = await fetch(`0https://animalworld-web-1.onrender.com/api/reviews/reviews/${productId}/create/`, {
         method: 'POST',
         headers: {
           'Authorization': `Token ${token}`,

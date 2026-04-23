@@ -1,28 +1,3 @@
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
 // src/App.js
 import React, { useState, useEffect, useCallback } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -42,10 +17,9 @@ const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
-  // Використовуємо useCallback для memoization функції fetchUserProfile
   const fetchUserProfile = useCallback(async (token) => {
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/users/profile/', {
+      const response = await fetch('https://animalworld-web-1.onrender.com/api/users/profile/', {
         headers: {
           Authorization: `Token ${token}`,
         },
@@ -55,19 +29,19 @@ const App = () => {
         setUser(data);
         setIsAuthenticated(true);
       } else {
-        handleLogout(); // Логаут, якщо токен недійсний
+        handleLogout(); 
       }
     } catch (error) {
       console.error('Не вдалося отримати профіль користувача:', error);
     }
-  }, []); // Використовуємо порожній масив залежностей, щоб функція не змінювалася
+  }, []); 
 
   useEffect(() => {
     const token = localStorage.getItem('access');
     if (token) {
       fetchUserProfile(token);
     }
-  }, [fetchUserProfile]); // Тепер залежність безпечно вказана
+  }, [fetchUserProfile]);
 
   const handleLogin = (data) => {
     localStorage.setItem('access', data.token);

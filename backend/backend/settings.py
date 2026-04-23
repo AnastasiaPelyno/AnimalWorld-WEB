@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-b07p%*@y)q#jg$g06n7hs#fr&a+51!+5u!np@a*(ixw=q&v3zu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['animalworld-web.onrender.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -78,6 +78,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 CORS_ALLOWED_ORIGINS = [
+    "https://animalworld-web-1.onrender.com",
     "http://localhost:3000",
 ]
 

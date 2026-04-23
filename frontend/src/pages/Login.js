@@ -1,4 +1,3 @@
-// src/pages/Login.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import { FaEnvelope, FaLock } from 'react-icons/fa';
@@ -17,12 +16,11 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://127.0.0.1:8000/api/users/login/', formData);
+      const response = await axios.post('hhttps://animalworld-web-1.onrender.com/api/users/login/', formData);
       
-      // При успішному вході зберігаємо токен і робимо користувача авторизованим
       localStorage.setItem('access', response.data.token);
-      onLogin(response.data); // Передаємо дані про користувача в батьківський компонент
-      navigate('/'); // Перенаправляємо на головну сторінку
+      onLogin(response.data); 
+      navigate('/'); 
     } catch (error) {
       setErrorMessage('Login failed. Please check your credentials.');
     }

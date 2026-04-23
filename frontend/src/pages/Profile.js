@@ -9,16 +9,16 @@ const Profile = ({ onUpdateProfile }) => {
     last_name: '',
     phone_number: '',
     email: '',
-    password: '', // Якщо поле паролю потрібно для оновлення
+    password: '', 
   });
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
-    // Завантажуємо дані профілю користувача
+    
     const fetchProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/users/profile/', {
+        const response = await axios.get('https://animalworld-web-1.onrender.com/api/users/profile/', {
           headers: {
             Authorization: `Token ${localStorage.getItem('access')}`,
           },
@@ -42,13 +42,13 @@ const Profile = ({ onUpdateProfile }) => {
     setError(null);
 
     try {
-      const response = await axios.put('http://localhost:8000/api/users/profile/', formData, {
+      const response = await axios.put('https://animalworld-web-1.onrender.com/api/users/profile/', formData, {
         headers: {
           Authorization: `Token ${localStorage.getItem('access')}`,
         },
       });
 
-      onUpdateProfile(response.data); // Оновлення даних у головному компоненті
+      onUpdateProfile(response.data); 
       setLoading(false);
       navigate('/');
     } catch (err) {

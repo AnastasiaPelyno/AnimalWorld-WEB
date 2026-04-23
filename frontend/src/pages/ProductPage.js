@@ -8,30 +8,29 @@ const ProductPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState('price');
-  const [authToken, setAuthToken] = useState(localStorage.getItem('access')); // Get token from localStorage
+  const [authToken, setAuthToken] = useState(localStorage.getItem('access')); 
 
   const [currentPage, setCurrentPage] = useState(1);
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
-  // Function to fetch products from API
   const fetchProducts = async () => {
-    let url = `http://127.0.0.1:8000/api/products/products/?search=${searchTerm}&category=${selectedCategory}&sort_by=${sortBy}&page=${currentPage}`;
+    let url = `0https://animalworld-web-1.onrender.com/api/products/products/?search=${searchTerm}&category=${selectedCategory}&sort_by=${sortBy}&page=${currentPage}`;
     
     const headers = {
-      'Authorization': `Token ${authToken}`, // Add token in the request headers
+      'Authorization': `Token ${authToken}`, 
     };
 
     try {
       const response = await fetch(url, { headers });
       if (response.ok) {
         const data = await response.json();
-        // ТЕПЕР ТОВАРИ ЛЕЖАТЬ В data.results (якщо пагінація увімкнена)
+       
         if (data.results) {
             setProducts(data.results);
-            setNextPage(data.next); // Зберігаємо посилання на наступну сторінку
-            setPrevPage(data.previous); // Зберігаємо посилання на попередню
+            setNextPage(data.next); 
+            setPrevPage(data.previous); 
         } else {
-            setProducts(data); // На випадок, якщо пагінація раптом вимкнеться
+            setProducts(data); 
         }
       } else {
         console.error('Failed to fetch products');
@@ -41,16 +40,16 @@ const ProductPage = () => {
     }
   };
 
-  // Function to fetch categories
+  
   const fetchCategories = async () => {
     const headers = {
-      'Authorization': `Token ${authToken}`, // Add token in the request headers
+      'Authorization': `Token ${authToken}`, 
     };
     try {
-      const response = await fetch('http://127.0.0.1:8000/api/products/categories/', { headers });
+      const response = await fetch('0https://animalworld-web-1.onrender.com/api/products/categories/', { headers });
       if (response.ok) {
         const data = await response.json();
-        console.log(data); // Check the data coming in
+        console.log(data); 
         setCategories(data);
       } else {
         console.error('Failed to fetch categories');
@@ -63,7 +62,7 @@ const ProductPage = () => {
   };
 
   const addToCart = async (productId) => {
-    const url = 'http://127.0.0.1:8000/api/cart/api/cart/add_to_cart/';
+    const url = 'https://animalworld-web-1.onrender.com0/api/cart/api/cart/add_to_cart/';
     const headers = {
       'Authorization': `Token ${authToken}`,
       'Content-Type': 'application/json',
@@ -71,7 +70,7 @@ const ProductPage = () => {
 
     const data = {
       product_id: productId,
-      quantity: 1, // Always add 1 item for now
+      quantity: 1, 
     };
 
     try {
@@ -95,7 +94,6 @@ const ProductPage = () => {
       setCurrentPage(1);
   }, [searchTerm, selectedCategory, sortBy]);
 
-  // Завантажуємо товари при зміні сторінки або фільтрів
   useEffect(() => {
     fetchProducts();
   }, [searchTerm, selectedCategory, sortBy, currentPage, authToken]); 
@@ -186,7 +184,7 @@ const ProductPage = () => {
           <p>No products found.</p>
         )}
       </div>
-    {/* НОВИЙ БЛОК: Кнопки пагінації */}
+    {/* Кнопки пагінації */}
       <div className="pagination-controls" style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '20px' }}>
         <button 
           onClick={() => setCurrentPage(prev => prev - 1)} 

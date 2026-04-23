@@ -99,17 +99,16 @@ const Register = ({ setIsAuthenticated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8000/api/users/register/', formData);
+      const response = await axios.post('https://animalworld-web-1.onrender.com/api/users/register/', formData);
 
       if (response.status === 201) {
         const token = response.data.token;
         localStorage.setItem('access', token);
-        setIsAuthenticated(true);  // Set authenticated state here
-
+        setIsAuthenticated(true);  
         setSuccessMessage("Registration successful!");
         
         setTimeout(() => {
-          navigate('/'); // Redirect to homepage after success
+          navigate('/'); 
         }, 1500);
       }
     } catch (error) {

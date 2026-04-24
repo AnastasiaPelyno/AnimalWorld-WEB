@@ -213,4 +213,10 @@ def create_admin_user(sender, **kwargs):
     User = get_user_model()
     # Створюємо адміна, якщо його ще немає
     if not User.objects.filter(email="admin@example.com").exists():
-        User.objects.create_superuser(email="admin@example.com", password="Anastasia28")
+        User.objects.create_superuser(
+    email="admin@example.com", 
+    password="Anastasia28!",
+    first_name="Admin",
+    last_name="Super",
+    phone_number="0000000000"
+)

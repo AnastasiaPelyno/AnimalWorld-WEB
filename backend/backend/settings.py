@@ -204,4 +204,13 @@ if 'test' in sys.argv:
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 
+from django.db.models.signals import post_migrate
+from django.dispatch import receiver
+from django.contrib.auth import get_user_model
 
+@receiver(post_migrate)
+def create_admin_user(sender, **kwargs):
+    User = get_user_model()
+    # Створюємо адміна, якщо його ще немає
+    if not User.objects.filter(email="admin@example.com").exists():
+        User.objects.create_superuser(email="admin@example.com", password="Anastasia28")

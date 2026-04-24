@@ -1,5 +1,4 @@
 import React from 'react';
-//import thankYouImage from './components/thank_you.jpg';// Замініть на реальний шлях до вашого зображення
 
 const CheckoutSuccessPage = () => {
   return (

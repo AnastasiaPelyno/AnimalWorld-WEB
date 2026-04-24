@@ -16,7 +16,7 @@ const Login = ({ onLogin }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('hhttps://animalworld-web.onrender.com/api/users/login/', formData);
+      const response = await axios.post('https://animalworld-web.onrender.com/api/users/login/', formData);
       
       localStorage.setItem('access', response.data.token);
       onLogin(response.data); 

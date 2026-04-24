@@ -94,8 +94,13 @@ const CartPage = () => {
           <div className="cart-items">
             {cartItems.map((cart_item) => (
               <div key={cart_item.cart_item_id} className="cart-item">
-                <img
+                {/* <img
                   src={cart_item.product.photo }
+                  alt={cart_item.product.name}
+                  className="cart-item-image"
+                /> */}
+                <img
+                  src={cart_item.product.image_url || cart_item.product.photo}
                   alt={cart_item.product.name}
                   className="cart-item-image"
                 />

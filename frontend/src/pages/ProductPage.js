@@ -14,7 +14,7 @@ const ProductPage = () => {
   const [nextPage, setNextPage] = useState(null);
   const [prevPage, setPrevPage] = useState(null);
   const fetchProducts = async () => {
-    let url = `0https://animalworld-web.onrender.com/api/products/products/?search=${searchTerm}&category=${selectedCategory}&sort_by=${sortBy}&page=${currentPage}`;
+    let url = `https://animalworld-web.onrender.com/api/products/products/?search=${searchTerm}&category=${selectedCategory}&sort_by=${sortBy}&page=${currentPage}`;
     
     const headers = {
       'Authorization': `Token ${authToken}`, 
@@ -46,7 +46,7 @@ const ProductPage = () => {
       'Authorization': `Token ${authToken}`, 
     };
     try {
-      const response = await fetch('0https://animalworld-web.onrender.com/api/products/categories/', { headers });
+      const response = await fetch('https://animalworld-web.onrender.com/api/products/categories/', { headers });
       if (response.ok) {
         const data = await response.json();
         console.log(data); 
@@ -157,7 +157,8 @@ const ProductPage = () => {
           products.map((product) => (
             <div key={product.product_id} className="product-card">
               <Link to={`/products/${product.product_id}`}>
-                <img src={product.photo} alt={product.name} className="product-image" />
+                {/* <img src={product.photo} alt={product.name} className="product-image" /> */}
+                <img src={product.image_url || product.photo} alt={product.name} className="product-image" />
               </Link>
               <div className="product-info">
                 <h3>{product.name}</h3>

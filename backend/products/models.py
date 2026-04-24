@@ -14,6 +14,7 @@ class Product(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
     photo = models.ImageField(upload_to='products/')
+    image_url = models.URLField(max_length=1000, null=True, blank=True)
     quantity = models.PositiveIntegerField()
     category = models.ForeignKey(Category, related_name='products', on_delete=models.SET_NULL, null=True)
     discount = models.DecimalField(max_digits=5, decimal_places=2, default=0)
